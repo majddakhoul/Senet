@@ -3,14 +3,6 @@ package board;
 import java.io.Serializable;
 import java.util.Random;
 
-/**
- * Simulates the four two-sided throwing sticks used in Senet.
- * <p>
- * Each stick lands either dark side up (counted as 1) or light side up
- * (counted as 0). The four results are summed; a total of 0 (all light) is
- * a special throw worth 5. This yields the standard Senet probability
- * distribution: 1 -> 4/16, 2 -> 6/16, 3 -> 4/16, 4 -> 1/16, 5 -> 1/16.
- */
 public class Dice implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -24,9 +16,6 @@ public class Dice implements Serializable {
         this.lastRoll = 0;
     }
 
-    /**
-     * Throws the four sticks and returns the resulting move value (1-5).
-     */
     public byte roll() {
         byte sum = 0;
 
@@ -46,10 +35,6 @@ public class Dice implements Serializable {
         return lastRoll;
     }
 
-    /**
-     * Returns the theoretical probability of a given roll value (1-5)
-     * under the standard four-stick Senet distribution.
-     */
     public static double getProbability(byte roll) {
         switch (roll) {
             case 1:

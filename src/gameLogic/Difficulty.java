@@ -2,11 +2,6 @@ package gameLogic;
 
 import java.io.Serializable;
 
-/**
- * Preset difficulty levels for the computer opponent, each mapped to an
- * Expectiminimax search depth. Deeper searches look further into the
- * future and play stronger, at the cost of more computation per move.
- */
 public enum Difficulty implements Serializable {
 
     EASY(2, "Easy — the computer looks two half-moves ahead."),

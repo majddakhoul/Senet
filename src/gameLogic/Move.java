@@ -2,9 +2,6 @@ package gameLogic;
 
 import java.io.Serializable;
 
-/**
- * A candidate move: "move the piece with this id by this many steps".
- */
 public class Move implements Serializable {
 
     private static final long serialVersionUID = 1L;

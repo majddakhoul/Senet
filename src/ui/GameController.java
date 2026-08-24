@@ -23,14 +23,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Owns the live {@link State} and drives the turn flow: rolling, waiting
- * for the human to click a piece, running the computer's search on a
- * background thread, and reacting to pause/save/load/new-game requests
- * from the {@link ControlPanel}. This is the only class that mutates the
- * live game state; {@link BoardPanel}, {@link ConsolePanel} and
- * {@link ControlPanel} only ever display what this class tells them to.
- */
 public class GameController {
 
     private enum Phase {
@@ -78,10 +70,6 @@ public class GameController {
         controlPanel.attachController(this);
     }
 
-    // ------------------------------------------------------------------
-    // New game
-    // ------------------------------------------------------------------
-
     public void promptNewGame() {
         NewGameDialog.Result result = NewGameDialog.showDialog(ownerFrame);
         if (result == null) {
@@ -118,10 +106,6 @@ public class GameController {
         controlPanel.setRollEnabled(true);
         updateStatusLabels();
     }
-
-    // ------------------------------------------------------------------
-    // Human turn
-    // ------------------------------------------------------------------
 
     public void rollDice() {
         if (phase != Phase.WAITING_TO_ROLL || state == null) {
@@ -188,10 +172,6 @@ public class GameController {
         state.switchTurn();
         advanceIfComputerTurn();
     }
-
-    // ------------------------------------------------------------------
-    // Computer turn
-    // ------------------------------------------------------------------
 
     private void advanceIfComputerTurn() {
         if (phase == Phase.PAUSED || phase == Phase.GAME_OVER || phase == Phase.NO_GAME) {
@@ -279,10 +259,6 @@ public class GameController {
         state.switchTurn();
         advanceIfComputerTurn();
     }
-
-    // ------------------------------------------------------------------
-    // Pause / save / load / rules / game over
-    // ------------------------------------------------------------------
 
     public void togglePause() {
         if (state == null) {
@@ -390,10 +366,6 @@ public class GameController {
         JOptionPane.showMessageDialog(ownerFrame, winner.getName() + " wins the game!",
                 "Game Over", JOptionPane.INFORMATION_MESSAGE);
     }
-
-    // ------------------------------------------------------------------
-    // Status display
-    // ------------------------------------------------------------------
 
     private void updateStatusLabels() {
         if (state == null) {

@@ -13,11 +13,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-/**
- * Persists {@link SaveData} to and from disk as named "slots" under the
- * {@code saves/} directory, using plain Java object serialization so the
- * project has no external dependencies.
- */
 public final class SaveManager {
 
     public static final String SAVE_DIRECTORY = "saves";
@@ -26,11 +21,6 @@ public final class SaveManager {
     private SaveManager() {
     }
 
-    /**
-     * Writes {@code data} to {@code saves/<slotName>.senetsave}, creating
-     * the directory if needed and overwriting any existing save with the
-     * same name.
-     */
     public static void save(SaveData data, String slotName) throws IOException {
         Path directory = Paths.get(SAVE_DIRECTORY);
         Files.createDirectories(directory);
@@ -43,9 +33,6 @@ public final class SaveManager {
         }
     }
 
-    /**
-     * Reads back a previously saved slot.
-     */
     public static SaveData load(String slotName) throws IOException, ClassNotFoundException {
         Path file = Paths.get(SAVE_DIRECTORY).resolve(sanitize(slotName) + SAVE_EXTENSION);
 
@@ -55,9 +42,6 @@ public final class SaveManager {
         }
     }
 
-    /**
-     * Lists the names of all available save slots, sorted alphabetically.
-     */
     public static List<String> listSaves() {
         Path directory = Paths.get(SAVE_DIRECTORY);
 
@@ -77,10 +61,6 @@ public final class SaveManager {
         }
     }
 
-    /**
-     * Deletes a save slot if it exists. Returns {@code true} if a file was
-     * actually removed.
-     */
     public static boolean delete(String slotName) throws IOException {
         Path file = Paths.get(SAVE_DIRECTORY).resolve(sanitize(slotName) + SAVE_EXTENSION);
         return Files.deleteIfExists(file);

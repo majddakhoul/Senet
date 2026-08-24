@@ -7,10 +7,6 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-/**
- * Everything a save file needs to fully restore a game session: the board
- * and player state, plus the AI settings that were in effect.
- */
 public class SaveData implements Serializable {
 
     private static final long serialVersionUID = 1L;

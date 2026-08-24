@@ -10,24 +10,11 @@ import player.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Implements Kendall's Rules for Senet: normal movement, captures
- * (position swaps), and the special behaviour of the five houses at the
- * end of the path (26-30).
- */
 public class GameLogic {
 
     private final Board board;
     private final GameLog log;
 
-    /**
-     * Creates a rules engine bound to {@code board}. Every narrated event
-     * (moves, captures, special-house effects) is sent to {@code log},
-     * which the caller supplies. Pass {@link GameLog#SILENT} for
-     * hypothetical states, such as the ones the AI explores during search,
-     * so the on-screen console only ever shows what actually happened in
-     * the real game.
-     */
     public GameLogic(Board board, GameLog log) {
         this.board = board;
         this.log = log;
@@ -37,9 +24,6 @@ public class GameLogic {
         log.log(message);
     }
 
-    /**
-     * Whether the given piece may legally move the given number of steps.
-     */
     public boolean canMovePiece(Piece piece, byte steps) {
         if (piece.isOut() || piece.getPosition() == null) {
             return false;
@@ -72,10 +56,6 @@ public class GameLogic {
         return true;
     }
 
-    /**
-     * Returns every piece of {@code player} that can legally move by
-     * {@code steps} squares.
-     */
     public List<Piece> getMovablePieces(Player player, byte steps) {
         List<Piece> movable = new ArrayList<>();
 
@@ -88,12 +68,6 @@ public class GameLogic {
         return movable;
     }
 
-    /**
-     * Applies a move to the board: relocates {@code piece} by {@code steps}
-     * squares, resolving captures (position swaps) and the special effect
-     * of the House of Water. Assumes the move has already been validated
-     * with {@link #canMovePiece}.
-     */
     public void movePiece(Piece piece, byte steps) {
         if (piece == null || piece.getPosition() == null || piece.isOut()) {
             return;
@@ -143,12 +117,6 @@ public class GameLogic {
         narrate("  -> " + piece.getColor() + "-Piece" + piece.getId() + " has exited the board!");
     }
 
-    /**
-     * Sends {@code piece} back to the nearest unoccupied house at or before
-     * the House of Rebirth (house 15), searching downward from 15 to 1.
-     * With at most 14 pieces ever on the board at once and 15 candidate
-     * houses, an empty house is always found.
-     */
     public void returnToRebirthArea(Piece piece) {
         if (piece.getPosition() != null) {
             int oldHouseNumber = piece.getPosition().toHouseNumber();
@@ -174,14 +142,6 @@ public class GameLogic {
         }
     }
 
-    /**
-     * Enforces the "one chance" rule of the last three houses before exit:
-     * any piece of {@code player} still sitting on House 28 (Three Truths),
-     * 29 (Re-Atoum) or 30 (Horus) that did not move on this turn is sent
-     * back to the House of Rebirth, since it failed to use its required
-     * roll in time. Call this once, after a player's move (or skipped
-     * turn) has been finalised.
-     */
     public void applyForcedHouseRule(Player player, Piece movedPiece) {
         for (Piece p : player.getPieces()) {
             if (p.isOut() || p.getPosition() == null || p == movedPiece) {

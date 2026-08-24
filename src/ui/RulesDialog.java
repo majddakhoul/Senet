@@ -12,10 +12,6 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Frame;
 
-/**
- * A simple modal dialog presenting the rules of the game (Kendall's Rules)
- * for players unfamiliar with Senet.
- */
 public final class RulesDialog {
 
     private static final String RULES_TEXT =

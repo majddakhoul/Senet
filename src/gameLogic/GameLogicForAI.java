@@ -9,12 +9,6 @@ import player.Player;
 
 import java.util.List;
 
-/**
- * Chooses moves for the computer player using Expectiminimax: a variant of
- * minimax that adds a "chance" layer for the random dice roll between each
- * pair of MAX/MIN turns, weighting each outcome by its true probability
- * (see {@link Dice#getProbability(byte)}).
- */
 public class GameLogicForAI {
 
     private final char aiColor;
@@ -31,12 +25,6 @@ public class GameLogicForAI {
         this(aiColor, false);
     }
 
-    /**
-     * Static evaluation of a state from the AI's point of view: higher is
-     * better for {@link #aiColor}. Rewards pieces that have exited,
-     * progress toward the exit, and landing on favourable special houses;
-     * penalises the opponent's equivalent progress.
-     */
     public int heuristic(State state) {
         int score = 0;
         Board board = state.getBoard();
@@ -158,11 +146,6 @@ public class GameLogicForAI {
         return expectedValue;
     }
 
-    /**
-     * Runs Expectiminimax to {@code depth} half-moves and returns the best
-     * move for {@code state.getCurrentPlayer()} given that they just rolled
-     * {@code diceRoll}, or {@code null} if no legal move exists.
-     */
     public Move getBestMove(State state, int depth, byte diceRoll) {
         visitedNodes = 0;
 

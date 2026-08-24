@@ -3,15 +3,6 @@ package board;
 import java.io.Serializable;
 import java.util.Objects;
 
-/**
- * A position on the Senet board's S-shaped path, expressed as a grid
- * coordinate (column, row) rather than a raw house number.
- * <p>
- * The board is three rows of ten columns each. Row 0 runs left to right
- * (houses 1-10), row 1 runs right to left (houses 11-20), and row 2 runs
- * left to right again (houses 21-30), forming the classic boustrophedon
- * ("S") path.
- */
 public final class Coordinate implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -29,10 +20,6 @@ public final class Coordinate implements Serializable {
         this.cY = cY;
     }
 
-    /**
-     * Builds the {@link Coordinate} for a 1-based house number (1-30) on
-     * the S-shaped path.
-     */
     public static Coordinate fromHouseNumber(int houseNumber) {
         if (houseNumber < 1 || houseNumber > 30) {
             throw new IllegalArgumentException("House number must be between 1 and 30, got " + houseNumber);
@@ -51,9 +38,6 @@ public final class Coordinate implements Serializable {
         return new Coordinate(x, y);
     }
 
-    /**
-     * Converts this coordinate back into its 1-based house number (1-30).
-     */
     public int toHouseNumber() {
         if (cY == 0) {
             return cX + 1;

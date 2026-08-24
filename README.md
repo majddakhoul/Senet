@@ -16,6 +16,8 @@ graphical board, a live colour-coded console, and full save/load.</strong></p>
 
 <img src="docs/assets/board-preview.webp" alt="Senet board preview" width="640" />
 
+<p><a href="README.ar.md">العربية</a></p>
+
 </div>
 
 ---
@@ -115,6 +117,8 @@ understands a plain source tree (IntelliJ IDEA, Eclipse, VS Code with the
 Java extension) and run `senet.Senet`.
 
 ## The interface
+
+Every screen is captured with real screenshots in [`docs/UI_GUIDE.md`](docs/UI_GUIDE.md) — this section is a quick summary; that guide walks through the new-game dialog, saving and loading, pausing, and the rules dialog one by one.
 
 The window is split into three parts:
 
@@ -266,6 +270,7 @@ java -cp bin senet.Senet
 
 ## Documentation
 
+- [`docs/UI_GUIDE.md`](docs/UI_GUIDE.md) — every screen, with real screenshots.
 - [`docs/GAME_RULES.md`](docs/GAME_RULES.md) — the full rules reference.
 - [`docs/AI_DESIGN.md`](docs/AI_DESIGN.md) — the Expectiminimax search and
   evaluation function.

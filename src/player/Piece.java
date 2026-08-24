@@ -4,12 +4,6 @@ import board.Coordinate;
 
 import java.io.Serializable;
 
-/**
- * A single playing piece ("pawn"). Each player owns seven of these.
- * A piece is either on the board at a given {@link Coordinate}, or has
- * already exited ({@link #isOut()}), in which case its position is
- * {@code null}.
- */
 public class Piece implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -21,13 +21,6 @@ import java.util.Collections;
 import java.util.Set;
 import java.util.function.IntConsumer;
 
-/**
- * Draws the 30-house S-shaped board and every piece on it, and reports
- * clicks back to whoever is listening by house number. Which houses (if
- * any) are currently clickable is entirely up to the caller, via
- * {@link #setHighlightedHouses(Set)}; this panel has no notion of whose
- * turn it is or what a legal move is.
- */
 public class BoardPanel extends JPanel {
 
     private static final int COLUMNS = 10;
@@ -74,11 +67,6 @@ public class BoardPanel extends JPanel {
         repaint();
     }
 
-    /**
-     * Marks a set of house numbers (1-30) as clickable/highlighted, e.g.
-     * the houses currently holding a movable piece. Pass an empty set to
-     * clear all highlights.
-     */
     public void setHighlightedHouses(Set<Integer> houses) {
         this.highlightedHouses = houses == null ? Collections.emptySet() : houses;
         repaint();

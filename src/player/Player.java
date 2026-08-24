@@ -6,10 +6,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A participant in the game: either a human or the computer. Owns seven
- * {@link Piece} instances, identified 0-6.
- */
 public class Player implements Serializable {
 
     private static final long serialVersionUID = 1L;

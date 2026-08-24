@@ -11,12 +11,6 @@ import javax.swing.UIManager;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
-/**
- * The application's top-level window: a board on the left, a live console
- * on the right, and a control panel with the game's actions. All the
- * actual game logic lives in {@link GameController}; this class only lays
- * out the Swing components and wires up the menu bar.
- */
 public class MainFrame extends JFrame {
 
     public MainFrame() {
@@ -75,7 +69,7 @@ public class MainFrame extends JFrame {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception ignored) {
-            // Fall back to the default cross-platform look and feel.
+
         }
 
         SwingUtilities.invokeLater(() -> new MainFrame().setVisible(true));

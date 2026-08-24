@@ -1,5 +1,7 @@
 # Computer Opponent: Expectiminimax Search
 
+[⬅ Main README](../README.md) · [العربية](AI_DESIGN.ar.md)
+
 ## Why not plain Minimax
 
 Senet looks like a classic two-player adversarial game, the kind Minimax was

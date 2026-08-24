@@ -11,12 +11,6 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 
-/**
- * The side panel: whose turn it is, the last roll, piece counts, the
- * active difficulty, and the action buttons (roll, save, load, pause,
- * new game, rules). Wires its buttons to a {@link GameController} once one
- * is attached; before that, every button is disabled.
- */
 public class ControlPanel extends JPanel {
 
     private final JLabel turnLabel = new JLabel("No game in progress");
@@ -80,7 +74,6 @@ public class ControlPanel extends JPanel {
         return b;
     }
 
-    /** Wires every button to the given controller. */
     public void attachController(GameController controller) {
         rollButton.addActionListener(e -> controller.rollDice());
         pauseButton.addActionListener(e -> controller.togglePause());
@@ -122,7 +115,6 @@ public class ControlPanel extends JPanel {
         saveButton.setEnabled(enabled);
     }
 
-    /** Enables/disables the controls that require an active game. */
     public void setGameInProgress(boolean inProgress) {
         pauseButton.setEnabled(inProgress);
         saveButton.setEnabled(inProgress);

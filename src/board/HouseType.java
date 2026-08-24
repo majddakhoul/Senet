@@ -2,13 +2,6 @@ package board;
 
 import java.io.Serializable;
 
-/**
- * The type of a single square ("house") on the Senet board.
- * <p>
- * A regular square has no special behaviour. The final five squares of the
- * board (26-30) each carry a unique rule, implemented in
- * {@code gameLogic.GameLogic}.
- */
 public enum HouseType implements Serializable {
 
     NORMAL("Normal", '-'),
@@ -27,10 +20,6 @@ public enum HouseType implements Serializable {
         this.symbol = symbol;
     }
 
-    /**
-     * Resolves the {@link HouseType} that a 1-based house number (1-30)
-     * corresponds to on a standard Kendall's Rules Senet board.
-     */
     public static HouseType forHouseNumber(int houseNumber) {
         switch (houseNumber) {
             case 15:

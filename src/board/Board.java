@@ -6,10 +6,6 @@ import player.Player;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * The 30-house Senet board. Owns house layout/typing and renders itself to
- * the console.
- */
 public class Board implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -25,12 +21,6 @@ public class Board implements Serializable {
         initPieces(player1, player2);
     }
 
-    /**
-     * Reconstructs a board directly from an already-built array of houses,
-     * without running the standard start-of-game layout. Used when copying
-     * or restoring a game state, so that piece positions already computed
-     * elsewhere are not overwritten by the initial layout.
-     */
     public Board(House[] houses) {
         this.houses = houses;
     }
@@ -73,10 +63,6 @@ public class Board implements Serializable {
         }
     }
 
-    /**
-     * Returns the house with the given 1-based number, or {@code null} if
-     * the number is out of range.
-     */
     public House getHouse(int number) {
         if (number < 1 || number > SIZE) {
             return null;
@@ -91,10 +77,6 @@ public class Board implements Serializable {
         return String.valueOf(h.getType().getSymbol());
     }
 
-    /**
-     * Prints an ASCII rendering of the board's S-shaped path to the console,
-     * one row for each of the three rows of ten houses.
-     */
     public void printBoard() {
         System.out.println();
         System.out.println("================= Board (S-path, houses 1-30) =================");

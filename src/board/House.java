@@ -4,11 +4,6 @@ import player.Piece;
 
 import java.io.Serializable;
 
-/**
- * A single square on the board. Each house has a fixed number, a fixed
- * {@link HouseType}, a fixed board {@link Coordinate}, and may currently be
- * occupied by a {@link Piece}.
- */
 public class House implements Serializable {
 
     private static final long serialVersionUID = 1L;

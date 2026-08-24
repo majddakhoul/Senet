@@ -1,5 +1,7 @@
 # Senet Rules Reference (Kendall's Rules)
 
+[⬅ Main README](../README.md) · [العربية](GAME_RULES.ar.md)
+
 This document is the authoritative rules reference for the ruleset implemented
 by this project. Senet's original rules were never recorded directly; this
 implementation follows the widely used reconstruction known as **Kendall's

@@ -1,5 +1,7 @@
 # Architecture
 
+[⬅ Main README](../README.md) · [العربية](ARCHITECTURE.ar.md)
+
 ## Package layout
 
 ```

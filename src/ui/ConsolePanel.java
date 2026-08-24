@@ -16,17 +16,6 @@ import java.awt.Font;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-/**
- * A scrolling, timestamped, colour-coded log of everything that happens in
- * the game: dice rolls, moves, captures, special-house effects, and system
- * messages. Player actions, computer actions, and system/rules narration
- * are each tagged and coloured differently so the two sides of the game
- * are always easy to tell apart at a glance.
- * <p>
- * Implements {@link GameLog} so the rules engine can narrate directly into
- * this panel; {@link #log(String)} is used for that generic, untagged
- * narration (captures, special-house effects, forced returns).
- */
 public class ConsolePanel extends JPanel implements GameLog {
 
     private static final DateTimeFormatter TIME_FORMAT = DateTimeFormatter.ofPattern("HH:mm:ss");
@@ -58,10 +47,6 @@ public class ConsolePanel extends JPanel implements GameLog {
         logSystem("Console ready. Every roll, move, and special-house effect will be reported here.");
     }
 
-    /**
-     * Generic narration, used by the rules engine for capture/special-house
-     * detail lines that follow a top-level "X moves..." announcement.
-     */
     @Override
     public void log(String message) {
         appendLine("GAME", SYSTEM_COLOR, message);
@@ -92,7 +77,7 @@ public class ConsolePanel extends JPanel implements GameLog {
             try {
                 document.remove(0, document.getLength());
             } catch (BadLocationException ignored) {
-                // Nothing to remove.
+
             }
         });
     }
@@ -114,7 +99,7 @@ public class ConsolePanel extends JPanel implements GameLog {
                 document.insertString(document.getLength(), String.format("%-9s", tag), tagStyle);
                 document.insertString(document.getLength(), message + "\n", bodyStyle);
             } catch (BadLocationException ignored) {
-                // Position is always valid (end of document); nothing to handle.
+
             }
 
             textPane.setCaretPosition(document.getLength());

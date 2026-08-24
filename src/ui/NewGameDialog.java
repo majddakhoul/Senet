@@ -18,14 +18,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.FlowLayout;
 
-/**
- * Modal setup wizard shown before a new game starts: the player's name, a
- * difficulty preset (or a custom search depth), and whether to enable
- * verbose AI search logging.
- */
 public class NewGameDialog extends JDialog {
 
-    /** The choices made in the dialog, or {@code null} if it was cancelled. */
     public static final class Result {
         public final String playerName;
         public final Difficulty difficulty;
@@ -57,10 +51,6 @@ public class NewGameDialog extends JDialog {
         buildUi();
     }
 
-    /**
-     * Shows the dialog modally and returns the player's choices, or
-     * {@code null} if they cancelled.
-     */
     public static Result showDialog(Frame owner) {
         NewGameDialog dialog = new NewGameDialog(owner);
         dialog.setVisible(true);
